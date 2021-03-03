@@ -34,4 +34,18 @@ module.exports = {
       res.send(err);
     }
   },
+
+  updateOne: async (req, res) => {
+    try {
+      const foundBlogPost = await Blog.findById(req.params.id);
+
+      const { title, text } = req.body;
+
+      if (title) foundBlogPost.title = title;
+      if (text) foundBlogPost.text = text;
+
+      res.json(await foundBlogPost.save());
+    } catch (err) {}
+    res.json("success");
+  },
 };

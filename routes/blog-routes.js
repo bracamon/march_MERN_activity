@@ -10,5 +10,6 @@ router.get("/", getAll);
 router.post("/", postBlog);
 
 router.get("/:id", findOne);
+router.patch("/:id", updateOne);
 
 module.exports = router;
